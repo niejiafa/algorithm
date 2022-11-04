@@ -1,3 +1,18 @@
+// 数组中只出现一次的数字 其余数字出现两次
+func singleNumber(_ s: [Int]) -> Int {
+    var temp = s[0]
+    
+    if s.count > 1 {
+        for i in 1..<s.count {
+            temp = temp ^ s[i]
+        }
+    }
+    
+    return temp
+}
+
+singleNumber([1, 1, 2, 3, 3])
+
 // 字符串反转
 func reverseString(_ s: inout [Character]) {
     var left = 0
