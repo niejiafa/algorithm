@@ -1,3 +1,39 @@
+// 二叉树的深度
+class TreeNode {
+    var val: Int
+    var left: TreeNode?
+    var right: TreeNode?
+    
+    init(_ val: Int) {
+        self.val = val
+        self.left = nil
+        self.right = nil
+    }
+}
+
+func maxDepth(_ tree: TreeNode?) -> Int {
+    guard tree != nil else {
+        return 0
+    }
+    
+    let leftCount = maxDepth(tree?.left)
+    let rightCount = maxDepth(tree?.right)
+    
+    return max(leftCount, rightCount) + 1
+}
+
+let oneTreeNode = TreeNode(1)
+let twoTreeNode = TreeNode(2)
+let threeTreeNode = TreeNode(3)
+let fourTreeNode = TreeNode(4)
+
+oneTreeNode.left = twoTreeNode
+oneTreeNode.right = threeTreeNode
+twoTreeNode.left = fourTreeNode
+print(maxDepth(oneTreeNode))
+
+
+
 // 数组中只出现一次的数字 其余数字出现两次
 func singleNumber(_ s: [Int]) -> Int {
     var temp = s[0]
